@@ -1,0 +1,106 @@
+if &compatible
+  set nocompatible
+end
+
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+
+" Let Vundle manage Vundle
+"Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-bundler'
+
+" Define bundles via Github repos
+Plugin 'christoomey/vim-run-interactive'
+
+" 自动补全插件
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+map <F4> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" 资源管理、搜索插件，类似Sublime的ctrl+p功能
+Plugin 'kien/ctrlp.vim'
+
+Plugin 'vim-scripts/ctags.vim'
+
+" 展示当前文件Symbol
+Plugin 'vim-scripts/taglist.vim'
+" 设置Taglist
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+let Tlist_Ctags_Cmd="/usr/bin/ctags"
+map <F9> :TlistTog<CR>
+
+" 展示当前文件Symbol
+Plugin 'majutsushi/tagbar'
+nmap <F8> :TagbarToggle<CR>
+
+" 资源管理器插件
+Plugin 'scrooloose/nerdtree'
+" 设置NerdTree快捷键
+map <F3> :NERDTreeMirror<CR>
+map <F3> :NERDTreeToggle<CR>
+
+Plugin 'tomasr/molokai'
+
+" 中文vim帮助文档
+Plugin 'asins/vimcdoc'
+
+" 缩进标识
+Plugin 'nathanaelkane/vim-indent-guides'
+" 设置缩进标识vim-indent-guides插件
+" 随vim自启动
+let g:indent_guides_enable_on_vim_startup=0
+" 从第二层开始可视化显示缩进
+let g:indent_guides_start_level=1
+" 色块宽度
+let g:indent_guides_guide_size=1
+" 快捷键 i 开关缩进可视化
+:nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+
+" ###### 快速注释                                                                                                                            
+Plugin 'scrooloose/nerdcommenter'
+map <leader>cc "注释选中内容
+map <leader>cu "取消选中注释
+map <leader>c$ "从当前光标开始到行尾注释掉
+
+" ##### *.cpp 和 *.h 间切换
+Plugin 'vim-scripts/a.vim'
+nmap <Leader>ch :A<CR>" 子窗口中显示 *.cpp 或 *.h
+nmap <Leader>sch :AS<CR>
+
+"Plugin 'mattn/emmet-vim'
+"Plugin 'danro/rename.vim'
+"Plugin 'kchmck/vim-coffee-script'
+"Plugin 'pbrisbin/vim-mkdir'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'slim-template/vim-slim'
+"Plugin 'thoughtbot/vim-rspec'
+"Plugin 'tpope/vim-endwise'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-rails'
+"Plugin 'tpope/vim-surround'
+" Plugin 'vim-ruby/vim-ruby'
+"Plugin 'vim-scripts/matchit.zip'
+"Plugin 'vim-scripts/tComment'
+"Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'klen/python-mode'
+"Plugin 'Lokaltog/vim-powerline'
+"Plugin 'godlygeek/tabular'
+"Plugin 'msanders/snipmate.vim'
+"Plugin 'jelera/vim-javascript-syntax'
+"Plugin 'altercation/vim-colors-solarized'
+" Plugin 'othree/html5.vim'
+"Plugin 'xsbeats/vim-blade'
+"Plugin 'Raimondi/delimitMate'
+"Plugin 'groenewege/vim-less'
+" Plugin 'evanmiller/nginx-vim-syntax'
+
+if filereadable(expand("~/.vimrc.vundle.local"))
+  source ~/.vim/.vimrc.vundle.local
+endif
+
+call vundle#end()
+filetype plugin indent on

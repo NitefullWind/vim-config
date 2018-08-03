@@ -11,12 +11,12 @@ set background=dark
 
 
 " 设置制表符宽度
+set autoindent	" 自动缩进，每行缩进值与上一行相等
 set tabstop=4
 set softtabstop=4
-" 每行缩进值与上一行相等
-set autoindent
-" 使用C/C++语言的自动缩进方式
-set cindent
-" 显示行号
-set nu!
+set shiftwidth=4
+set noexpandtab	
+set cindent		" 使用C/C++语言的自动缩进方式
+set cinoptions=g0
+set nu!				" 显示行号
 
